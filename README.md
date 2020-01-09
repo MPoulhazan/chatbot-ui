@@ -10,5 +10,10 @@ npm install
 npm start
 ```
 
-* Make sure to update the environments/environment.ts Client Access Token is correct.
+## Deploy
+
+```
+npm run build --prod
+firebase deploy
+```
 
