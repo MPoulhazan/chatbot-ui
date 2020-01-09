@@ -4,6 +4,8 @@
   display: flex;
   position: fixed;
   bottom: 0;
+  max-height: 80px;
+  max-width: 900px;
 
   .chatinput{
     float: left;
