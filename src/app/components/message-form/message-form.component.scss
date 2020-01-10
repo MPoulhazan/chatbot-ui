@@ -1,4 +1,4 @@
-.chatcontrol{
+.chatcontrol {
   float: left;
   width: 100%;
   display: flex;
@@ -13,6 +13,7 @@
     height: 50px;
     margin: 20px;
     flex: 4;
+    border-radius: 25px;
   }
 
   .btn-container {

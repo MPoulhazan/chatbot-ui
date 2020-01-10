@@ -1,24 +1,40 @@
-.message {
-  font-size: 1em;
-  font-style: italic;
-  font-weight: 400;
-}
+.list-group-item {
+    border-radius: 23px;
+    margin-bottom: 5px;
 
-.timeform {
-  text-align: right;
-  width: 100%;
+    &.bot-msg {
+        margin-right: 5%;
+        background-color: #fdfdfd;;
+    }
 
-  i {
-    margin-left: 20px;
-  }
+    &.user-msg {
+        margin-left: 5%;
+        background-color: #2012dc;
+        color: #ffffff;
+    }
 
-  .timestamp{
-    font-size: 0.6em;
-  }
-}
+    .message {
+        font-size: 1em;
+        font-style: italic;
+        font-weight: 400;
+    }
 
-.avatar{
-  width: 50px;
-  margin-right: 20px;
-  border-radius: 50%;
+    .timeform {
+        text-align: right;
+        width: 100%;
+
+        i {
+            margin-left: 20px;
+        }
+
+        .timestamp{
+            font-size: 0.6em;
+        }
+    }
+
+    .avatar{
+        width: 50px;
+        margin-right: 20px;
+        border-radius: 50%;
+    }
 }

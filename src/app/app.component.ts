@@ -12,9 +12,9 @@ export class AppComponent {
 
 
   constructor() {
-    this.message = new Message('', 'assets/images/user.png');
+    this.message = new Message('', 'assets/images/user.png', false);
     this.messages = [
-      new Message('Bonjour, je suis votre assistant dentaire, posez-moi vos questions !', 'assets/images/dentist.png', new Date())
+      new Message('Bonjour, je suis votre assistant dentaire, posez-moi vos questions !', 'assets/images/dentist.png', true,  new Date())
     ];
   }
 }
