@@ -1,0 +1,15 @@
+.chatform{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .message-form {
+        position: fixed;
+        bottom: 0;
+        background-color: #ffffff;
+        width: 100%;
+        max-width: 900px;
+    }
+}
