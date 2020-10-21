@@ -1,6 +1,7 @@
 .list-group-item {
     border-radius: 23px;
     margin-bottom: 5px;
+    box-shadow: 2px 2px 2px #c1c1c1;
 
     &.bot-msg {
         margin-right: 5%;
@@ -9,7 +10,8 @@
 
     &.user-msg {
         margin-left: 5%;
-        background-color: #2012dc;
+        background: rgb(21,10,103);
+        background: linear-gradient(90deg, rgba(21,10,103,1) 0%, rgba(11,11,120,1) 42%, rgba(9,9,121,1) 89%);
         color: #ffffff;
     }
 
