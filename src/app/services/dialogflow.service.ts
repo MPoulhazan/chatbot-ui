@@ -15,7 +15,7 @@ export class DialogflowService {
     public getResponse(query: string) {
         let data = {
             query: query,
-            lang: 'en',
+            lang: 'fr',
             sessionId: '12345'
         }
         return this.http

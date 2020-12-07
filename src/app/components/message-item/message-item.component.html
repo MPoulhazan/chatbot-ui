@@ -2,6 +2,9 @@
   <img [src]="message.avatar" class="avatar"/>
   <div class="message">
     {{message.content}}
+    <div *ngFor="let imageMessage of message.imageMessage"  class="image-container">
+      <img *ngIf="imageMessage.imageUrl" class="image" src="{{imageMessage.imageUrl}}" alt="Impossible d'afficher l'image" />
+    </div>
   </div>
   <div class="timeform">
     <i class="fa fa-clock-o" aria-hidden="true"></i> <span class="timestamp">le {{message.timestamp | date : 'dd/MM/yyyy à HH:mm' }}</span>
