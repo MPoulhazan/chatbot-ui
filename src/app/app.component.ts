@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
     public message: Message;
     public messages: Message[];
 
-    private sharedService: SharedService;
+    sharedService: SharedService;
 
     constructor(sharedService: SharedService) {
         this.sharedService = sharedService;

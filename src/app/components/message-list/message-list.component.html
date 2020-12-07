@@ -1,5 +1,6 @@
 <div class="chatlist">
     <ul class="list-group">
-        <message-item *ngFor="let msg of messages" [message]="msg"></message-item>
+        <message-item class=" message-ctr animate__animated animate__fadeIn" *ngFor="let msg of messages" [message]="msg"></message-item>
+        <app-loader-msg *ngIf="sharedService.isLoadingMessage" ></app-loader-msg>
     </ul>
 </div>

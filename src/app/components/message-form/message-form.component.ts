@@ -30,6 +30,7 @@ export class MessageFormComponent implements OnInit {
     public sendMessage(): void {
         this.message.timestamp = new Date();
         this.messages.push(this.message);
+        this.sharedService.isLoadingMessage = true;
 
         this.dialogFlowService.getResponse(this.message.content).subscribe(res => {
             const images: IImageMessage[] = res.result.fulfillment.messages;
@@ -37,7 +38,9 @@ export class MessageFormComponent implements OnInit {
                 new Message(res.result.fulfillment.speech, 'assets/images/dentist.png', true, res.timestamp, images)
             );
             this.sharedService.onMessageReceive.emit(true);
-        });
+        },
+            error => console.log('Unable to get message : ', error),
+            () => this.sharedService.isLoadingMessage = false);
 
         this.message = new Message('', 'assets/images/user.png', false);
     }

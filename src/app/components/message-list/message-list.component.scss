@@ -4,5 +4,10 @@
 
   .list-group {
     margin: 10px;
+
+    .message-ctr {
+      display: block;
+      position: relative;
+    }
   }
 }

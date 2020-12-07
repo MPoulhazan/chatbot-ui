@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { DialogflowService } from '@app/services';
 import { MessageListComponent, MessageFormComponent, MessageItemComponent } from '@app/components'
 import { SharedService } from './services/shared.service';
+import { LoaderMsgComponent } from './shared/ui-components/loader-msg/loader-msg.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MessageListComponent,
         MessageFormComponent,
-        MessageItemComponent
+        MessageItemComponent,
+        LoaderMsgComponent
     ],
     imports: [
         BrowserModule,

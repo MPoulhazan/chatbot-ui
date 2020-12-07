@@ -12,8 +12,10 @@ export class MessageListComponent implements OnInit {
     @Input('messages')
     public messages: Message[];
 
+    sharedService: SharedService;
 
-    constructor() {
+    constructor(sharedService: SharedService) {
+        this.sharedService = sharedService;
     }
 
     ngOnInit() {
