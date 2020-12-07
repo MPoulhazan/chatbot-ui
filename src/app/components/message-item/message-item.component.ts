@@ -16,11 +16,9 @@ export class MessageItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.hasImageInMsg = this.message.imageMessage && this.message.imageMessage.length > 0;
+
+    this.hasImageInMsg = this.message.imageMessage
+      && this.message.imageMessage.length > 0
+      && this.message.imageMessage.filter(img => img.imageUrl).length > 0;
   }
-
-  // private getImagesInMessage() {
-  //   this.message.imageMessage && this.message.imageMessage.length > 0 ? this.message.imageMessage.
-  // }
-
 }

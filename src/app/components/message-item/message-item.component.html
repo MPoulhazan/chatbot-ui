@@ -2,8 +2,10 @@
   <img [src]="message.avatar" class="avatar"/>
   <div class="message">
     {{message.content}}
-    <div *ngFor="let imageMessage of message.imageMessage"  class="image-container">
-      <img *ngIf="imageMessage.imageUrl" class="image" src="{{imageMessage.imageUrl}}" alt="Impossible d'afficher l'image" />
+    <div *ngIf="this.hasImageInMsg" class="image-container">
+      <div *ngFor="let imageMessage of message.imageMessage">
+        <img *ngIf="imageMessage.imageUrl" class="image" src="{{imageMessage.imageUrl}}" alt="Impossible d'afficher l'image" />
+      </div>
     </div>
   </div>
   <div class="timeform">
