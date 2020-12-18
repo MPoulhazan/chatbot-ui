@@ -12,13 +12,23 @@ export class MessageItemComponent implements OnInit {
   message: Message;
 
   hasImageInMsg = false;
+  name = '';
 
   constructor() { }
 
   ngOnInit() {
 
+    this.name = this.getName();
+    
     this.hasImageInMsg = this.message.imageMessage
       && this.message.imageMessage.length > 0
       && this.message.imageMessage.filter(img => img.imageUrl).length > 0;
+  }
+
+  private getName(): string {
+    if(this.message.isBot) {
+      return 'Parobot';
+    }
+    return 'Vous';
   }
 }

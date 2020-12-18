@@ -1,7 +1,10 @@
 <li class="list-group-item" [ngClass]="message.isBot ? 'bot-msg' : 'user-msg'">
-  <img [src]="message.avatar" class="avatar"/>
+  <div class="msg-header">
+    <img [src]="message.avatar" class="avatar" [ngClass]="message.isBot ? 'bot' : ''" />
+    <h3 class="user-name" [ngClass]="message.isBot ? 'bot' : ''">{{name}}</h3>
+  </div>
   <div class="message">
-    {{message.content}}
+    <p class="content-msg">{{message.content}}</p>
     <div *ngIf="this.hasImageInMsg" class="image-container">
       <div *ngFor="let imageMessage of message.imageMessage">
         <img *ngIf="imageMessage.imageUrl" class="image" src="{{imageMessage.imageUrl}}" alt="Impossible d'afficher l'image" />
