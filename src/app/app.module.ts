@@ -1,18 +1,23 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
-import { DialogflowService } from "@app/services";
-import {
-  MessageListComponent,
-  MessageFormComponent,
-  MessageItemComponent,
-} from "@app/components";
+
 import { SharedService } from "./services/shared.service";
-import { TypingAnimationDirective } from "angular-typing-animation";
+import {
+  TypingAnimationDirective,
+  TypingAnimationModule,
+} from "angular-typing-animation";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
+import { DialogflowService } from "./services";
+import {
+  MessageFormComponent,
+  MessageItemComponent,
+  MessageListComponent,
+} from "./components";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -20,12 +25,13 @@ import { environment } from "../environments/environment";
     MessageListComponent,
     MessageFormComponent,
     MessageItemComponent,
-    TypingAnimationDirective,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
+    TypingAnimationModule,
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
     }),

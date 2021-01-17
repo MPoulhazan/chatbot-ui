@@ -36,7 +36,7 @@ export class MessageFormComponent implements OnInit {
 
     this.dialogFlowService
       .getResponse(this.message.content)
-      .subscribe((res) => {
+      .subscribe((res: any) => {
         const images: IImageMessage[] = res.result.fulfillment.messages;
         this.messages.push(
           new Message(

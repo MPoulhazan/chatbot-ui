@@ -1,6 +1,6 @@
 .list-group-item {
   border-radius: 23px;
-  margin-bottom: 5px;
+  margin: 10px;
   box-shadow: 2px 2px 2px #c1c1c1;
 
   &.bot-msg {
@@ -28,6 +28,7 @@
 
     .content-msg {
       line-height: 1.5em;
+      margin-top: 10px;
     }
 
     ::ng-deep .typed-cursor {
