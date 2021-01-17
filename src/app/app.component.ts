@@ -5,7 +5,7 @@ import {
   OnInit,
   HostListener,
 } from "@angular/core";
-import { Message } from "@app/models";
+import { Message } from "./models";
 import { SharedService } from "./services/shared.service";
 import { Constants } from "./utils/constants";
 
@@ -27,10 +27,14 @@ export class AppComponent implements OnInit {
     this.message = new Message("", avatarUserPath, false);
     this.messages = [
       new Message(
-        "Bonjour, je suis votre assistant dentaire, posez-moi vos questions !",
+        "Bonjour je suis Parobot, votre assistant dentaire développé dans le cadre de la thèse de Camille COUFFY. " +
+          "Je suis une IA qui peux répondre à vos questions concernant la parodonthologie. " +
+          "Posez-moi vos questions !",
         avatarDentistPath,
         true,
-        new Date()
+        new Date(),
+        null,
+        true
       ),
     ];
   }

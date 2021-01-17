@@ -1,76 +1,85 @@
 .list-group-item {
-    border-radius: 23px;
-    margin-bottom: 5px;
-    box-shadow: 2px 2px 2px #c1c1c1;
+  border-radius: 23px;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px 2px #c1c1c1;
 
-    &.bot-msg {
-        margin-right: 5%;
-        background-color: #fdfdfd;;
+  &.bot-msg {
+    margin-right: 5%;
+    background-color: #fdfdfd;
+  }
+
+  &.user-msg {
+    margin-left: 5%;
+    background: rgb(21, 10, 103);
+    background: linear-gradient(
+      90deg,
+      rgba(21, 10, 103, 1) 0%,
+      rgba(11, 11, 120, 1) 42%,
+      rgba(9, 9, 121, 1) 89%
+    );
+    color: #ffffff;
+  }
+
+  .message {
+    font-size: 1em;
+    font-weight: 400;
+    white-space: pre-wrap;
+    line-height: 0.5em;
+
+    .content-msg {
+      line-height: 1.5em;
     }
 
-    &.user-msg {
-        margin-left: 5%;
-        background: rgb(21,10,103);
-        background: linear-gradient(90deg, rgba(21,10,103,1) 0%, rgba(11,11,120,1) 42%, rgba(9,9,121,1) 89%);
-        color: #ffffff;
+    ::ng-deep .typed-cursor {
+      display: none;
     }
 
-    .message {
-        font-size: 1em;
-        font-weight: 400;
-        white-space: pre-wrap;
-        line-height: 0.5em;
+    .image-container {
+      .image {
+        max-width: 100%;
+      }
+    }
+  }
 
-        .content-msg {
-            line-height: 1.5em;
-        }
+  .timeform {
+    text-align: right;
+    width: 100%;
 
-        .image-container {
-            .image {
-                max-width: 100%;
-            }
-        }
+    i {
+      margin-left: 20px;
     }
 
-    .timeform {
-        text-align: right;
-        width: 100%;
-
-        i {
-            margin-left: 20px;
-        }
-
-        .timestamp{
-            font-size: 0.6em;
-        }
+    .timestamp {
+      font-size: 0.6em;
     }
+  }
 
-    .msg-header {
-        display: flex;
-        width: 100%;
+  .msg-header {
+    display: flex;
+    width: 100%;
 
-        .avatar{
-            width: 50px;
-            margin-right: 20px;
-            border-radius: 50%;
+    .avatar {
+      width: 50px;
+      margin-right: 20px;
+      border-radius: 50%;
 
-            &.bot { 
-                box-shadow: 1px 1px 4px #b4b4b4;
-            }
-        }
-        .user-name {
-            font-size: 1em;
-            border-bottom: 2px solid #25ae88;
-            width: fit-content;
-            height: fit-content;
-            padding-bottom: 3px;
-            color: #ffffff;
-            font-weight: bold;
-
-            &.bot {
-                border-bottom: 2px solid #8fcbe7;
-                color: #00689b;
-            }
-        }
+      &.bot {
+        box-shadow: 1px 1px 4px #b4b4b4;
+      }
     }
+    .user-name {
+      font-size: 1em;
+      border-bottom: 2px solid #25ae88;
+      width: fit-content;
+      height: fit-content;
+      padding-bottom: 3px;
+      color: #ffffff;
+      font-weight: bold;
+
+      &.bot {
+        border-bottom: 2px solid #8fcbe7;
+        color: #00689b;
+      }
+    }
+  }
 }

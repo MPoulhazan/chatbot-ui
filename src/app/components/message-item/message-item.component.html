@@ -1,17 +1,42 @@
 <li class="list-group-item" [ngClass]="message.isBot ? 'bot-msg' : 'user-msg'">
   <div class="msg-header">
-    <img [src]="message.avatar" class="avatar" [ngClass]="message.isBot ? 'bot' : ''" />
-    <h3 class="user-name" [ngClass]="message.isBot ? 'bot' : ''">{{name}}</h3>
+    <img
+      [src]="message.avatar"
+      class="avatar"
+      [ngClass]="message.isBot ? 'bot' : ''"
+    />
+    <h3 class="user-name" [ngClass]="message.isBot ? 'bot' : ''">{{ name }}</h3>
   </div>
   <div class="message">
-    <p class="content-msg">{{message.content}}</p>
+    <p
+      *ngIf="message.isTypingEffect"
+      typingAnimation
+      [typeSpeed]="20"
+      [startDelay]="500"
+      [hideCursorOnComplete]="true"
+      (complete)="onComplete()"
+      class="content-msg"
+    >
+      {{ message.content }}
+    </p>
+    <p *ngIf="!message.isTypingEffect" class="content-msg">
+      {{ message.content }}
+    </p>
     <div *ngIf="this.hasImageInMsg" class="image-container">
       <div *ngFor="let imageMessage of message.imageMessage">
-        <img *ngIf="imageMessage.imageUrl" class="image" src="{{imageMessage.imageUrl}}" alt="Impossible d'afficher l'image" />
+        <img
+          *ngIf="imageMessage.imageUrl"
+          class="image"
+          src="{{ imageMessage.imageUrl }}"
+          alt="Impossible d'afficher l'image"
+        />
       </div>
     </div>
   </div>
   <div class="timeform">
-    <i class="fa fa-clock-o" aria-hidden="true"></i> <span class="timestamp">le {{message.timestamp | date : 'dd/MM/yyyy à HH:mm' }}</span>
+    <i class="fa fa-clock-o" aria-hidden="true"></i>
+    <span class="timestamp"
+      >le {{ message.timestamp | date: "dd/MM/yyyy à HH:mm" }}</span
+    >
   </div>
 </li>
