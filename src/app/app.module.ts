@@ -11,6 +11,8 @@ import {
 } from "@app/components";
 import { SharedService } from "./services/shared.service";
 import { TypingAnimationDirective } from "angular-typing-animation";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,14 @@ import { TypingAnimationDirective } from "angular-typing-animation";
     MessageItemComponent,
     TypingAnimationDirective,
   ],
-  imports: [BrowserModule, FormsModule, HttpModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    ServiceWorkerModule.register("ngsw-worker.js", {
+      enabled: environment.production,
+    }),
+  ],
   providers: [DialogflowService, SharedService],
   bootstrap: [AppComponent],
 })
