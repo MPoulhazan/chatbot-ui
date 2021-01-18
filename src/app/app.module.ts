@@ -18,6 +18,7 @@ import {
   MessageListComponent,
 } from "./components";
 import { CommonModule } from "@angular/common";
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CommonModule } from "@angular/common";
     MessageListComponent,
     MessageFormComponent,
     MessageItemComponent,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,

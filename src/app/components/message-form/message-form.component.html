@@ -1,6 +1,13 @@
 <div class="chatcontrol">
-    <input type="text" class="form-control chatinput" (keyup.enter)="sendMessage()" [(ngModel)]="message.content" />
-    <div class="btn-container">
-        <button class="btn btn-success sendbtn" (click)="sendMessage()"><i class="material-icons">send</i></button>
-    </div>
+  <input
+    type="text"
+    class="form-control chatinput"
+    (keyup.enter)="sendMessage()"
+    [(ngModel)]="message.content"
+  />
+  <div class="btn-container">
+    <button class="btn btn-success sendbtn" (click)="sendMessage()">
+      <i class="material-icons">send</i>
+    </button>
+  </div>
 </div>

@@ -1,19 +1,24 @@
-p, div, h1, h2, h3 {
-    font-family: 'Comfortaa', cursive, Arial, Helvetica, sans-serif;
-    font-style: normal;
+p,
+div,
+h1,
+h2,
+h3 {
+  font-family: "Comfortaa", cursive, Arial, Helvetica, sans-serif;
+  font-style: normal;
 }
-.chatform{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.chatform {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 3em;
 
-    .message-form {
-        position: fixed;
-        bottom: 0;
-        background-color: #ffffff;
-        width: 100%;
-        max-width: 900px;
-    }
+  .message-form {
+    position: fixed;
+    bottom: 0;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 900px;
+  }
 }
