@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   public messages: Message[];
   private sharedService: SharedService;
 
+  @ViewChild("bottom") bottom: ElementRef;
+
   constructor(sharedService: SharedService) {
     this.sharedService = sharedService;
     const avatarDentistPath = this.getDentistAvatar(true);
@@ -47,7 +49,13 @@ export class AppComponent implements OnInit {
   }
 
   private scrollToBottom(): void {
-    window.scrollTo(0, document.body.scrollHeight);
+    if (this.bottom) {
+      this.bottom.nativeElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
   }
 
   private getDentistAvatar(isDentist: boolean): string {
