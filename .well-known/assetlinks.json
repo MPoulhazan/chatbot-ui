@@ -1,5 +1,12 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "com.firebaseapp.chatbot_dentist.twa",
-                   "sha256_cert_fingerprints": ["46:94:1C:9B:BF:21:EF:BD:F3:81:90:6F:D5:C7:82:E6:34:37:00:A2:3A:54:D0:AE:54:E5:B5:A2:DE:55:A8:E2"] }
-    }]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.firebaseapp.chatbot_dentist.twa",
+      "sha256_cert_fingerprints": [
+        "46:94:1C:9B:BF:21:EF:BD:F3:81:90:6F:D5:C7:82:E6:34:37:00:A2:3A:54:D0:AE:54:E5:B5:A2:DE:55:A8:E2"
+      ]
+    }
+  }
+]
