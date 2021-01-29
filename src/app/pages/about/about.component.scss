@@ -1,0 +1,68 @@
+.about {
+  background-image: url("../../../assets/images/bg-about.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+    .left-container {
+      padding: 10px;
+      .title {
+        margin-left: 5px;
+        font-size: 3em;
+        font-family: "righteous", "arial", sans-serif;
+        text-shadow: 1px 1px 2px #ffffff;
+
+        .blue {
+          font-family: "righteous", "arial", sans-serif;
+          color: #00689b;
+        }
+
+        .white {
+          color: #ffffff;
+          font-family: "righteous", "arial", sans-serif;
+          bottom: 10px;
+          text-shadow: 1px 1px 3px #ffffff;
+        }
+      }
+    }
+
+    .right-container {
+      color: #ffffff;
+      padding: 10px;
+
+      .underline {
+        border-bottom: 2px solid #ffffff;
+        color: #ffffff;
+        text-decoration: none;
+
+        &:hover {
+          color: #000000;
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .start-btn {
+      margin-top: 30px;
+      z-index: 2;
+      border: 3px solid #ffffff;
+    }
+  }
+}

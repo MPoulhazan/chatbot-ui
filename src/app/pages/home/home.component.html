@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="chatform">
+  <message-list class="msg-list" [messages]="messages"></message-list>
+  <message-form
+    [message]="message"
+    [messages]="messages"
+    class="message-form"
+  ></message-form>
+  <div #bottom class="bottom"></div>
+</div>

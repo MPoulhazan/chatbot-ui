@@ -5,7 +5,9 @@
       ><span class="blue">PARO</span><span class="black">BOT</span></span
     >
   </div>
-  <!--   <div class="right-container">
-    <div class="menu"></div>
-  </div> -->
+  <div class="right-container">
+    <app-dropdown-menu [open]="open" [links]="links"
+      ><div class="menu" (click)="open = !open"></div
+    ></app-dropdown-menu>
+  </div>
 </div>

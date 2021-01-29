@@ -18,7 +18,13 @@ import {
   MessageListComponent,
 } from "./components";
 import { CommonModule } from "@angular/common";
-import { HeaderComponent } from './shared/header/header.component';
+import { HeaderComponent } from "./shared/header/header.component";
+import { DropdownMenuComponent } from "./shared/dropdown-menu/dropdown-menu.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { AboutComponent } from "./pages/about/about.component";
+import { HomeComponent } from "./pages/home/home.component";
+import { FuiButtonComponent } from "./shared/fui-button/fui-button.component";
+import { FuiSwitchComponent } from "./shared/fui-switch/fui-switch.component";
 
 @NgModule({
   declarations: [
@@ -27,8 +33,14 @@ import { HeaderComponent } from './shared/header/header.component';
     MessageFormComponent,
     MessageItemComponent,
     HeaderComponent,
+    DropdownMenuComponent,
+    HomeComponent,
+    AboutComponent,
+    FuiButtonComponent,
+    FuiSwitchComponent,
   ],
   imports: [
+    AppRoutingModule,
     CommonModule,
     BrowserModule,
     FormsModule,

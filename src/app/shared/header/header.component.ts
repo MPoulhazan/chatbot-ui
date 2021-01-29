@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ILink } from "../../models/link";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
+  links: ILink[];
+  open = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    this.links = this.getLinks();
   }
 
+  private getLinks(): ILink[] {
+    return [
+      { url: "/about", label: "Qui sommes-nous" } as ILink,
+      { url: "/about", label: "paramètres" } as ILink,
+      { url: "/about", label: "A propos" } as ILink,
+    ] as ILink[];
+  }
 }
