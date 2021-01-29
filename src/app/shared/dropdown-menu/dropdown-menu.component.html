@@ -1,4 +1,7 @@
-<div class="dropdown" [ngClass]="open ? 'opened' : null">
+<div
+  class="dropdown"
+  [ngClass]="[open ? 'opened' : '', sharedService.isDarkMode ? 'dark' : '']"
+>
   <ng-content></ng-content>
 
   <div class="dropdown-content">
@@ -9,6 +12,12 @@
       class="link"
       >{{ link.label }}</a
     >
+    <app-fui-switch
+      [checked]="isDarkMode"
+      [value]="'Dark mode'"
+      [classes]="'rounded '"
+      (action)="toggleDarkMode($event)"
+    ></app-fui-switch>
     <app-fui-switch
       [checked]="isSpeedAnswerActivated"
       [value]="'Réponses rapides'"

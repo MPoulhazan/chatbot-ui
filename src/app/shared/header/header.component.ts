@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { SharedService } from "../../services/shared.service";
 import { ILink } from "../../models/link";
 
 @Component({
@@ -9,8 +10,11 @@ import { ILink } from "../../models/link";
 export class HeaderComponent implements OnInit {
   links: ILink[];
   open = false;
+  sharedService: SharedService;
 
-  constructor() {}
+  constructor(sharedService: SharedService) {
+    this.sharedService = sharedService;
+  }
 
   ngOnInit(): void {
     this.links = this.getLinks();

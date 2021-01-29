@@ -14,9 +14,12 @@ export class MessageItemComponent implements OnInit, OnDestroy {
   hasImageInMsg = false;
   name = "";
   isShowImage = true;
+  sharedService: SharedService;
   private audio = new Audio();
 
-  constructor(private sharedService: SharedService) {}
+  constructor(sharedService: SharedService) {
+    this.sharedService = sharedService;
+  }
 
   ngOnInit() {
     this.name = this.getName();

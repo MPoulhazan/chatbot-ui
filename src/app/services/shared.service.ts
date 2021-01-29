@@ -3,11 +3,13 @@ import { Injectable, EventEmitter } from "@angular/core";
 @Injectable()
 export class SharedService {
   onMessageReceive: EventEmitter<boolean>;
+  isDarkMode = false;
   isSpeedAnswer = true;
   isSoundActivated = true;
 
   constructor() {
     this.onMessageReceive = new EventEmitter();
+    this.isDarkMode = this.getParam("dark") === "true";
     this.isSpeedAnswer =
       !this.getParam("speed") || this.getParam("speed") === "true";
     this.isSoundActivated =

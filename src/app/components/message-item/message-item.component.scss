@@ -2,6 +2,9 @@
   border-radius: 23px;
   margin: 10px;
   box-shadow: 2px 2px 2px #c1c1c1;
+  -webkit-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;
 
   &.bot-msg {
     margin-right: 5%;
@@ -10,6 +13,7 @@
 
   &.user-msg {
     margin-left: 5%;
+    background-color: rgb(21, 10, 103);
     background: rgb(21, 10, 103);
     background: linear-gradient(
       90deg,
@@ -17,6 +21,11 @@
       rgba(11, 11, 120, 1) 42%,
       rgba(9, 9, 121, 1) 89%
     );
+    color: #ffffff;
+  }
+
+  &.dark {
+    background-color: #353535;
     color: #ffffff;
   }
 

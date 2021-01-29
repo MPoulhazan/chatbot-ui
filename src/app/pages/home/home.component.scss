@@ -5,6 +5,13 @@
   align-items: center;
   flex-direction: column;
   padding-top: 3em;
+  -webkit-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;
+
+  &.dark {
+    background-color: #000000;
+  }
 
   .msg-list {
     width: 100%;

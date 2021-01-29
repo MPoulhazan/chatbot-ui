@@ -7,6 +7,9 @@
   box-shadow: 0px 1px 6px #e3e3e3;
   display: flex;
   justify-content: space-between;
+  -webkit-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;
 
   .left-container {
     align-items: center;
@@ -53,5 +56,10 @@
     &:hover {
       transform: scale(1.1);
     }
+  }
+
+  &.dark {
+    background-color: #353535;
+    color: #ffffff;
   }
 }

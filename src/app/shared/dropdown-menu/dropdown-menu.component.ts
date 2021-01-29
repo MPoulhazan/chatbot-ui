@@ -17,22 +17,30 @@ export class DropdownMenuComponent implements OnInit {
   links: ILink[];
 
   isMobile: boolean;
+  isDarkMode: boolean;
   isSpeedAnswerActivated: boolean;
   isSoundActivated: boolean;
+  sharedService: SharedService;
 
-  constructor(
-    private pwaService: PwaService,
-    private sharedService: SharedService
-  ) {}
+  constructor(sharedService: SharedService, private pwaService: PwaService) {
+    this.sharedService = sharedService;
+  }
 
   ngOnInit(): void {
     this.isMobile = this.pwaService.isWithMobile();
+    this.isDarkMode = this.sharedService.isDarkMode;
     this.isSpeedAnswerActivated = this.sharedService.isSpeedAnswer;
     this.isSoundActivated = this.sharedService.isSoundActivated;
   }
 
   installApp() {
     this.pwaService.addToHomeScreen();
+  }
+
+  toggleDarkMode(evt: boolean) {
+    this.isDarkMode = !this.isDarkMode;
+    this.sharedService.isDarkMode = this.isDarkMode;
+    this.sharedService.saveParams("dark", this.isDarkMode);
   }
 
   toggleSpeedAnswer(evt: boolean) {

@@ -1,6 +1,9 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  -webkit-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;
 
   .dropdown-content {
     display: none;
@@ -26,6 +29,19 @@
 
       &:hover {
         text-decoration: underline;
+      }
+    }
+  }
+  &.dark {
+    background-color: #353535;
+    color: #ffffff;
+
+    .dropdown-content {
+      background-color: #353535;
+      color: #ffffff;
+
+      .link {
+        color: #ffffff;
       }
     }
   }

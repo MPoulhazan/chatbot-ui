@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="chatform">
+<div class="chatform" [ngClass]="sharedService.isDarkMode ? 'dark' : ''">
   <message-list class="msg-list" [messages]="messages"></message-list>
   <message-form
     [message]="message"

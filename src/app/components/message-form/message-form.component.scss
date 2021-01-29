@@ -3,6 +3,20 @@
   display: flex;
   max-height: 80px;
   max-width: 900px;
+  -webkit-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;
+
+  &.dark {
+    background-color: #000000;
+
+    .chatinput,
+    .sendbtn {
+      background-color: #353535 !important;
+      color: #ffffff;
+      box-shadow: none !important;
+    }
+  }
 
   .chatinput {
     height: 50px;

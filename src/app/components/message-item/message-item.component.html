@@ -1,4 +1,10 @@
-<li class="list-group-item" [ngClass]="message.isBot ? 'bot-msg' : 'user-msg'">
+<li
+  class="list-group-item"
+  [ngClass]="[
+    message.isBot ? 'bot-msg' : 'user-msg',
+    sharedService.isDarkMode ? 'dark' : ''
+  ]"
+>
   <div class="msg-header">
     <img
       [src]="message.avatar"

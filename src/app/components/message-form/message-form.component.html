@@ -1,4 +1,4 @@
-<div class="chatcontrol">
+<div class="chatcontrol" [ngClass]="sharedService.isDarkMode ? 'dark' : ''">
   <input
     type="text"
     class="form-control chatinput"

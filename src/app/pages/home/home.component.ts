@@ -11,7 +11,7 @@ import { Constants } from "../../utils/constants";
 export class HomeComponent implements OnInit {
   public message: Message;
   public messages: Message[];
-  private sharedService: SharedService;
+  public sharedService: SharedService;
 
   @ViewChild("bottom") bottom: ElementRef;
 
