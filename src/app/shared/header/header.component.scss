@@ -43,10 +43,15 @@
     padding-left: 5px;
     padding-right: 10px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
 
     &:after {
       content: "\2807";
       font-size: 2em;
+    }
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }

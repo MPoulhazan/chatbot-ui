@@ -7,9 +7,14 @@ $white: #ffffff;
   height: 34px;
   margin: 10px;
   flex-direction: row;
+  align-items: center;
 
   .label {
     flex-grow: 2;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .switch-btn {
@@ -32,6 +37,7 @@ $white: #ffffff;
       background-color: #ccc;
       -webkit-transition: 0.4s;
       transition: 0.4s;
+      height: 34px;
 
       &.shadow {
         box-shadow: 2px 2px 3px #6d6d6d;
@@ -60,10 +66,7 @@ $white: #ffffff;
 
     input.checked + .slider {
       background-color: $black;
-    }
-
-    input:focus + .slider {
-      /* box-shadow: 0 0 1px $black; */
+      height: 34px;
     }
 
     input.checked + .slider:before {
