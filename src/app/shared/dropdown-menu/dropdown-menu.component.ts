@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { PwaService } from "../../services/pwa-service.service";
 import { ILink } from "../../models/link";
 
 @Component({
@@ -13,7 +14,15 @@ export class DropdownMenuComponent implements OnInit {
   @Input()
   links: ILink[];
 
-  constructor() {}
+  isMobile: boolean;
 
-  ngOnInit(): void {}
+  constructor(private pwaService: PwaService) {}
+
+  ngOnInit(): void {
+    this.isMobile = this.pwaService.isWithMobile();
+  }
+
+  installApp() {
+    this.pwaService.addToHomeScreen();
+  }
 }

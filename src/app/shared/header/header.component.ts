@@ -18,8 +18,7 @@ export class HeaderComponent implements OnInit {
 
   private getLinks(): ILink[] {
     return [
-      { url: "/about", label: "Qui sommes-nous" } as ILink,
-      { url: "/about", label: "paramètres" } as ILink,
+      { url: "/", label: "Parobot" } as ILink,
       { url: "/about", label: "A propos" } as ILink,
     ] as ILink[];
   }

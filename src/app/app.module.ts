@@ -25,6 +25,7 @@ import { AboutComponent } from "./pages/about/about.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { FuiButtonComponent } from "./shared/fui-button/fui-button.component";
 import { FuiSwitchComponent } from "./shared/fui-switch/fui-switch.component";
+import { PwaService } from "./services/pwa-service.service";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { FuiSwitchComponent } from "./shared/fui-switch/fui-switch.component";
       enabled: environment.production,
     }),
   ],
-  providers: [DialogflowService, SharedService],
+  providers: [DialogflowService, SharedService, PwaService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

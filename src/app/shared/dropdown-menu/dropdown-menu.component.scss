@@ -20,6 +20,11 @@
     .link {
       color: #000000;
       margin: 10px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

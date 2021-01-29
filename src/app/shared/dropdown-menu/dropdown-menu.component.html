@@ -9,5 +9,8 @@
       class="link"
       >{{ link.label }}</a
     >
+    <span *ngIf="isMobile" class="link" (click)="installApp()"
+      >Installer l'App</span
+    >
   </div>
 </div>

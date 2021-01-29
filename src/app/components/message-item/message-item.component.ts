@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { Message } from "../../models";
 
 @Component({
@@ -6,7 +6,7 @@ import { Message } from "../../models";
   templateUrl: "./message-item.component.html",
   styleUrls: ["./message-item.component.scss"],
 })
-export class MessageItemComponent implements OnInit {
+export class MessageItemComponent implements OnInit, OnDestroy {
   @Input("message")
   message: Message;
 
@@ -29,8 +29,13 @@ export class MessageItemComponent implements OnInit {
       this.message.imageMessage.filter((img) => img.imageUrl).length > 0;
   }
 
+  ngOnDestroy() {
+    if (this.audio) this.audio.pause();
+    this.audio = null;
+  }
+
   onComplete() {
-    this.audio.pause();
+    if (this.audio) this.audio.pause();
     this.audio = null;
   }
 
