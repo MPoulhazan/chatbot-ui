@@ -23,7 +23,9 @@ export class MessageItemComponent implements OnInit, OnDestroy {
     this.audio.src = "../../assets/sounds/typing.mp3";
     this.audio.load();
 
-    if (this.message.isTypingEffect) this.audio.play();
+    if (this.message.isTypingEffect && this.sharedService.isSoundActivated) {
+      this.audio.play();
+    }
 
     this.hasImageInMsg =
       this.message.imageMessage &&

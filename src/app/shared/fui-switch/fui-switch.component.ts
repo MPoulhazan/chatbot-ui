@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { SharedService } from "../../services/shared.service";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
   selector: "app-fui-switch",
@@ -13,19 +12,20 @@ export class FuiSwitchComponent implements OnInit {
   @Input()
   classes: string;
 
+  @Input()
   checked: boolean;
 
-  constructor(private sharedService: SharedService) {
+  @Output()
+  action: EventEmitter<boolean> = new EventEmitter();
+
+  constructor() {
     this.value = "";
     this.classes = "";
   }
 
-  ngOnInit(): void {
-    this.checked = this.sharedService.isSpeedAnswer;
-  }
+  ngOnInit(): void {}
 
-  setSpeedAnswer() {
-    this.checked = !this.checked;
-    this.sharedService.isSpeedAnswer = this.checked;
+  doAction(): void {
+    this.action.emit(true);
   }
 }

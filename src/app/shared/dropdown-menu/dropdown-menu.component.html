@@ -10,8 +10,16 @@
       >{{ link.label }}</a
     >
     <app-fui-switch
+      [checked]="isSpeedAnswerActivated"
       [value]="'Réponses rapides'"
       [classes]="'rounded '"
+      (action)="toggleSpeedAnswer($event)"
+    ></app-fui-switch>
+    <app-fui-switch
+      [checked]="isSoundActivated"
+      [value]="'Son'"
+      [classes]="'rounded '"
+      (action)="toggleSound($event)"
     ></app-fui-switch>
     <span *ngIf="true || isMobile" class="link" (click)="installApp()"
       >Installer l'App</span
