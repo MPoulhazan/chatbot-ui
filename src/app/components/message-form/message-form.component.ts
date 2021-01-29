@@ -29,28 +29,30 @@ export class MessageFormComponent implements OnInit {
   ngOnInit() {}
 
   public sendMessage(): void {
-    this.message.timestamp = new Date();
-    this.messages.push(this.message);
-    const dentistAvatar = this.getDentistAvatar(true);
-    const userAvatar = this.getDentistAvatar(false);
+    if (!!this.message.content) {
+      this.message.timestamp = new Date();
+      this.messages.push(this.message);
+      const dentistAvatar = this.getDentistAvatar(true);
+      const userAvatar = this.getDentistAvatar(false);
 
-    this.dialogFlowService
-      .getResponse(this.message.content)
-      .subscribe((res: any) => {
-        const images: IImageMessage[] = res.result.fulfillment.messages;
-        this.messages.push(
-          new Message(
-            res.result.fulfillment.speech,
-            dentistAvatar,
-            true,
-            res.timestamp,
-            images
-          )
-        );
-        this.sharedService.onMessageReceive.emit(true);
-      });
-
-    this.message = new Message("", userAvatar, false);
+      this.dialogFlowService
+        .getResponse(this.message.content)
+        .subscribe((res: any) => {
+          const images: IImageMessage[] = res.result.fulfillment.messages;
+          this.messages.push(
+            new Message(
+              res.result.fulfillment.speech,
+              dentistAvatar,
+              true,
+              res.timestamp,
+              images,
+              !this.sharedService.isSpeedAnswer
+            )
+          );
+          this.sharedService.onMessageReceive.emit(true);
+        });
+      this.message = new Message("", userAvatar, false);
+    }
   }
 
   private getDentistAvatar(isDentist: boolean): string {

@@ -22,7 +22,10 @@
     <p *ngIf="!message.isTypingEffect" class="content-msg">
       {{ message.content }}
     </p>
-    <div *ngIf="this.hasImageInMsg" class="image-container">
+    <div
+      *ngIf="this.hasImageInMsg && isShowImage"
+      class="image-container fui-animation fui-fadein"
+    >
       <div *ngFor="let imageMessage of message.imageMessage">
         <img
           *ngIf="imageMessage.imageUrl"

@@ -1,12 +1,11 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from "@angular/core";
 
 @Injectable()
 export class SharedService {
+  onMessageReceive: EventEmitter<boolean>;
+  isSpeedAnswer = true;
 
-    onMessageReceive: EventEmitter<boolean>;
-
-    constructor() {
-        this.onMessageReceive = new EventEmitter();
-    }
-
+  constructor() {
+    this.onMessageReceive = new EventEmitter();
+  }
 }

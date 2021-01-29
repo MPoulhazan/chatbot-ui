@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from "@angular/core";
+import { SharedService } from "../../services/shared.service";
 import { Message } from "../../models";
 
 @Component({
@@ -12,9 +13,10 @@ export class MessageItemComponent implements OnInit, OnDestroy {
 
   hasImageInMsg = false;
   name = "";
+  isShowImage = true;
   private audio = new Audio();
 
-  constructor() {}
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit() {
     this.name = this.getName();
@@ -27,6 +29,8 @@ export class MessageItemComponent implements OnInit, OnDestroy {
       this.message.imageMessage &&
       this.message.imageMessage.length > 0 &&
       this.message.imageMessage.filter((img) => img.imageUrl).length > 0;
+
+    this.showImage();
   }
 
   ngOnDestroy() {
@@ -37,6 +41,12 @@ export class MessageItemComponent implements OnInit, OnDestroy {
   onComplete() {
     if (this.audio) this.audio.pause();
     this.audio = null;
+
+    this.isShowImage = true;
+  }
+
+  showImage() {
+    this.isShowImage = this.sharedService.isSpeedAnswer;
   }
 
   private getName(): string {

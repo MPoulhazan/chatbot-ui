@@ -1,4 +1,13 @@
 <label class="switch">
-  <input type="checkbox" />
-  <span class="slider" [ngClass]="classes"></span>
+  <div class="label">
+    <span>{{ value }}</span>
+  </div>
+  <div class="switch-btn">
+    <input
+      [ngClass]="checked ? 'checked' : ''"
+      type="checkbox"
+      (click)="setSpeedAnswer()"
+    />
+    <span class="slider" [ngClass]="classes"></span>
+  </div>
 </label>

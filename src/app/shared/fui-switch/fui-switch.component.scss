@@ -3,63 +3,73 @@ $white: #ffffff;
 
 .switch {
   position: relative;
-  display: inline-block;
-  width: 60px;
+  display: flex;
   height: 34px;
   margin: 10px;
+  flex-direction: row;
 
-  input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-
-  &.shadow {
-    box-shadow: 2px 2px 3px #6d6d6d;
+  .label {
+    flex-grow: 2;
   }
 
-  &.rounded {
-    border-radius: 34px;
+  .switch-btn {
+    transform: scale(0.7);
+    position: relative;
+    margin-right: 15px;
+    bottom: 6px;
+
+    input {
+      opacity: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+
+      &.shadow {
+        box-shadow: 2px 2px 3px #6d6d6d;
+      }
+
+      &.rounded {
+        border-radius: 34px;
+        width: 62px;
+      }
+
+      &.rounded:before {
+        border-radius: 50%;
+      }
+      &:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+    }
+
+    input.checked + .slider {
+      background-color: $black;
+    }
+
+    input:focus + .slider {
+      /* box-shadow: 0 0 1px $black; */
+    }
+
+    input.checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
   }
-
-  &.rounded:before {
-    border-radius: 50%;
-  }
-  &:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-  }
-}
-
-input:checked + .slider {
-  background-color: $black;
-}
-
-input:focus + .slider {
-  /* box-shadow: 0 0 1px $black; */
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
 }
