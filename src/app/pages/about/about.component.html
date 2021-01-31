@@ -1,42 +1,43 @@
-<app-header></app-header>
 <div class="about fui-animation fui-fadein">
-  <div class="top">
-    <div class="left-container">
-      <span class="title fui-animation fui-fadein fui-animation-duration-3"
-        ><span class="blue">PARO</span><span class="white">BOT</span></span
-      >
-    </div>
-    <div
-      class="right-container fui-animation fui-fadein fui-animation-duration-3 fui-animation-delay-1"
-    >
-      <p>Owner Camille COUFFY</p>
-      <p>
-        Developed by
-        <a
-          href="http://cv-mpoulhazan.herokuapp.com/"
-          href="mailto:mickael.poulhazan@gmail.com?subject=[Parobot]%20-%20Prise%20de%20contact"
-          target="_blank"
-          class="underline"
-          >Mickael POULHAZAN</a
+    <div class="top">
+        <div class="left-container">
+            <span
+                class="title fui-animation fui-fadein fui-animation-duration-3"
+                ><span class="blue">PARO</span
+                ><span class="white">BOT</span></span
+            >
+        </div>
+        <div
+            class="right-container fui-animation fui-fadein fui-animation-duration-3 fui-animation-delay-1"
         >
-      </p>
-      <p>© - 2021</p>
+            <p>Owner Camille COUFFY</p>
+            <p>
+                Developed by
+                <a
+                    href="http://cv-mpoulhazan.herokuapp.com/"
+                    href="mailto:mickael.poulhazan@gmail.com?subject=[Parobot]%20-%20Prise%20de%20contact"
+                    target="_blank"
+                    class="underline"
+                    >Mickael POULHAZAN</a
+                >
+            </p>
+            <p>© - 2021</p>
+        </div>
     </div>
-  </div>
-  <div class="bottom">
-    <a
-      (click)="goToProfile()"
-      class="start-btn fui-animation fui-fadein fui-animation-duration-3 fui-animation-delay-2"
-    >
-      <app-fui-button
-        [value]="'Contact'"
-        [classes]="'animated bold big-1 no-margin '"
-      ></app-fui-button>
-    </a>
-  </div>
-  <div class="links">
-    <a href="{{ playstoreLink }}" target="_blank">
-      <img src="../../../assets/images/icons-google-play.svg" />
-    </a>
-  </div>
+    <div class="bottom">
+        <a
+            (click)="goToProfile()"
+            class="start-btn fui-animation fui-fadein fui-animation-duration-3 fui-animation-delay-2"
+        >
+            <app-fui-button
+                [value]="'Contact'"
+                [classes]="'animated bold big-1 no-margin '"
+            ></app-fui-button>
+        </a>
+    </div>
+    <div class="links">
+        <a href="{{ playstoreLink }}" target="_blank">
+            <img src="../../../assets/images/icons-google-play.svg" />
+        </a>
+    </div>
 </div>

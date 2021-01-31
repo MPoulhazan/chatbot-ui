@@ -1,99 +1,101 @@
 .list-group-item {
-  border-radius: 23px;
-  margin: 10px;
-  box-shadow: 2px 2px 2px #c1c1c1;
-  -webkit-transition: background-color 500ms linear;
-  -ms-transition: background-color 500ms linear;
-  transition: background-color 500ms linear;
+    border-radius: 23px;
+    margin: 10px;
+    box-shadow: 2px 2px 2px #c1c1c1;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
 
-  &.bot-msg {
-    margin-right: 5%;
-    background-color: #fdfdfd;
-  }
-
-  &.user-msg {
-    margin-left: 5%;
-    background-color: rgb(21, 10, 103);
-    background: rgb(21, 10, 103);
-    background: linear-gradient(
-      90deg,
-      rgba(21, 10, 103, 1) 0%,
-      rgba(11, 11, 120, 1) 42%,
-      rgba(9, 9, 121, 1) 89%
-    );
-    color: #ffffff;
-  }
-
-  &.dark {
-    background-color: #353535;
-    color: #ffffff;
-  }
-
-  .message {
-    font-size: 1em;
-    font-weight: 400;
-    white-space: pre-wrap;
-    line-height: 0.5em;
-
-    .content-msg {
-      line-height: 1.5em;
-      margin-top: 10px;
+    &.bot-msg {
+        margin-right: 5%;
+        background-color: #fdfdfd;
     }
 
-    ::ng-deep .typed-cursor {
-      display: none;
+    &.user-msg {
+        margin-left: 5%;
+        background-color: rgb(21, 10, 103);
+        background: rgb(21, 10, 103);
+        background: linear-gradient(
+            90deg,
+            rgba(21, 10, 103, 1) 0%,
+            rgba(11, 11, 120, 1) 42%,
+            rgba(9, 9, 121, 1) 89%
+        );
+        color: #ffffff;
     }
 
-    .image-container {
-      .image {
-        max-width: 100%;
-      }
-    }
-  }
-
-  .timeform {
-    text-align: right;
-    width: 100%;
-
-    i {
-      margin-left: 20px;
-      margin-right: 5px;
+    &.dark {
+        background-color: #353535;
+        color: #ffffff;
     }
 
-    .timestamp {
-      font-size: 0.6em;
+    .message {
+        font-size: 1em;
+        font-weight: 400;
+        white-space: pre-wrap;
+        line-height: 0.5em;
+
+        .content-msg {
+            line-height: 1.5em;
+            margin-top: 10px;
+        }
+
+        ::ng-deep .typed-cursor {
+            display: none;
+        }
+
+        .image-container {
+            .image {
+                max-width: 100%;
+            }
+        }
     }
-  }
 
-  .msg-header {
-    display: flex;
-    width: 100%;
+    .timeform {
+        text-align: right;
+        width: 100%;
 
-    .avatar {
-      width: 50px;
-      height: 50px;
-      margin-right: 20px;
-      border-radius: 50%;
-      background-color: #25ae88;
-      cursor: pointer;
+        i {
+            margin-left: 20px;
+            margin-right: 5px;
+        }
 
-      &.bot {
-        box-shadow: 1px 1px 4px #b4b4b4;
-      }
+        .timestamp {
+            font-size: 0.6em;
+        }
     }
-    .user-name {
-      font-size: 1em;
-      border-bottom: 2px solid #25ae88;
-      width: fit-content;
-      height: fit-content;
-      padding-bottom: 3px;
-      color: #ffffff;
-      font-weight: bold;
 
-      &.bot {
-        border-bottom: 2px solid #8fcbe7;
-        color: #00689b;
-      }
+    .msg-header {
+        display: flex;
+        width: 100%;
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: #25ae88;
+            cursor: pointer;
+            box-shadow: 1px 1px 4px #25ae88;
+
+            &.bot {
+                box-shadow: 1px 1px 4px #b4b4b4;
+                cursor: auto;
+            }
+        }
+        .user-name {
+            font-size: 1em;
+            border-bottom: 2px solid #25ae88;
+            width: fit-content;
+            height: fit-content;
+            padding-bottom: 3px;
+            color: #ffffff;
+            font-weight: bold;
+
+            &.bot {
+                border-bottom: 2px solid #8fcbe7;
+                color: #00689b;
+            }
+        }
     }
-  }
 }

@@ -42,7 +42,7 @@ export class AvatarGeneratorServiceService {
             this.randomAvatarId
         );
         this.generateRandomAvatar(true);
-        this.sharedService.newAvatarEvent.next(true);
+        this.sharedService.newAvatar$.next(true);
     }
 
     private generateRandomAvatar(seed?: boolean) {

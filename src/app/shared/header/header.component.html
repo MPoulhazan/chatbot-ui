@@ -1,13 +1,13 @@
 <div class="header" [ngClass]="sharedService.isDarkMode ? 'dark' : ''">
-  <div class="left-container" routerLink="'/'" routerLinkActive="active">
-    <img src="../../../assets/icons/icon-tooth-96x96.png" class="logo" />
-    <span class="logo-title"
-      ><span class="blue">PARO</span><span class="black">BOT</span></span
-    >
-  </div>
-  <div class="right-container">
-    <app-dropdown-menu [open]="open" [links]="links"
-      ><div class="menu" (click)="open = !open"></div
-    ></app-dropdown-menu>
-  </div>
+    <div class="left-container" routerLink="'/'" routerLinkActive="active">
+        <img src="../../../assets/icons/icon-tooth-96x96.png" class="logo" />
+        <span class="logo-title"
+            ><span class="blue">PARO</span><span class="black">BOT</span></span
+        >
+    </div>
+    <div class="right-container">
+        <app-dropdown-menu [open]="open" [links]="links"
+            ><div class="menu" (click)="toggleOpen()"></div
+        ></app-dropdown-menu>
+    </div>
 </div>

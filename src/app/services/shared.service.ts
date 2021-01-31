@@ -7,7 +7,8 @@ export class SharedService {
     isDarkMode = false;
     isSpeedAnswer = true;
     isSoundActivated = true;
-    newAvatarEvent = new BehaviorSubject<boolean>(true);
+    newAvatar$ = new BehaviorSubject<boolean>(true);
+    open$ = new BehaviorSubject<boolean>(false);
 
     static readonly AVATAR_KEY = 'avatar';
 

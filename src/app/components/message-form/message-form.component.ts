@@ -13,6 +13,7 @@ import { IImageMessage } from '../../models/image-message';
 import { DialogflowService } from '../../services';
 import { SharedService } from '../../services/shared.service';
 import { Constants } from '../../utils/constants';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-message-form',
@@ -27,6 +28,7 @@ export class MessageFormComponent implements OnInit, OnDestroy {
     messages: Message[];
 
     sharedService: SharedService;
+    avatarSubscription: Subscription;
 
     constructor(
         sharedService: SharedService,
@@ -41,7 +43,7 @@ export class MessageFormComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.sharedService.newAvatarEvent.unsubscribe();
+        this.avatarSubscription.unsubscribe();
     }
 
     public sendMessage(): void {
@@ -81,10 +83,12 @@ export class MessageFormComponent implements OnInit, OnDestroy {
     }
 
     ckekNewAvatar() {
-        this.sharedService.newAvatarEvent.subscribe(() => {
-            if (this.message) {
-                this.message.avatar = this.avatarGeneratorServiceService.userAvatar;
+        this.avatarSubscription = this.sharedService.newAvatar$.subscribe(
+            () => {
+                if (this.message) {
+                    this.message.avatar = this.avatarGeneratorServiceService.userAvatar;
+                }
             }
-        });
+        );
     }
 }

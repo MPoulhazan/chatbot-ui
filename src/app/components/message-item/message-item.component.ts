@@ -62,14 +62,16 @@ export class MessageItemComponent implements OnInit, OnDestroy {
         this.isShowImage = this.sharedService.isSpeedAnswer;
     }
 
-    onImgError(event) {
+    onImgError(event: any) {
         console.error('Unable to load avatar, set default');
         event.target.src = Constants.AVATAR_USER_PATH;
     }
 
-    generateNewUserAvatar(event) {
-        this.avatarGeneratorServiceService.generateNewUserAvatar();
-        event.target.src = this.avatarGeneratorServiceService.userAvatar;
+    generateNewUserAvatar(event: any, isBot: boolean) {
+        if (!isBot) {
+            this.avatarGeneratorServiceService.generateNewUserAvatar();
+            event.target.src = this.avatarGeneratorServiceService.userAvatar;
+        }
     }
 
     private getName(): string {

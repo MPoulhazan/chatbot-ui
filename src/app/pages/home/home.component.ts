@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
         this.messages = [
             new Message(
                 'Bonjour je suis Parobot, votre assistant dentaire développé dans le cadre de la thèse de Camille COUFFY. ' +
-                    'Je suis une IA qui peux répondre à vos questions concernant la parodonthologie. ' +
+                    'Je suis une IA qui peut répondre à vos questions concernant la parodonthologie. ' +
                     'Posez-moi vos questions !',
                 avatarDentistPath,
                 true,

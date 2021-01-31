@@ -1,53 +1,55 @@
 <li
-  class="list-group-item"
-  [ngClass]="[
-    message.isBot ? 'bot-msg' : 'user-msg',
-    sharedService.isDarkMode ? 'dark' : ''
-  ]"
+    class="list-group-item"
+    [ngClass]="[
+        message.isBot ? 'bot-msg' : 'user-msg',
+        sharedService.isDarkMode ? 'dark' : ''
+    ]"
 >
-  <div class="msg-header">
-    <img
-      [src]="message.avatar"
-      class="avatar"
-      [ngClass]="message.isBot ? 'bot' : ''"
-      (error)="onImgError($event)"
-      (click)="generateNewUserAvatar($event)"
-    />
-    <h3 class="user-name" [ngClass]="message.isBot ? 'bot' : ''">{{ name }}</h3>
-  </div>
-  <div class="message">
-    <p
-      *ngIf="message.isTypingEffect"
-      typingAnimation
-      [typeSpeed]="20"
-      [startDelay]="500"
-      [hideCursorOnComplete]="true"
-      (complete)="onComplete()"
-      class="content-msg"
-    >
-      {{ message.content }}
-    </p>
-    <p *ngIf="!message.isTypingEffect" class="content-msg">
-      {{ message.content }}
-    </p>
-    <div
-      *ngIf="this.hasImageInMsg && isShowImage"
-      class="image-container fui-animation fui-fadein"
-    >
-      <div *ngFor="let imageMessage of message.imageMessage">
+    <div class="msg-header">
         <img
-          *ngIf="imageMessage.imageUrl"
-          class="image"
-          src="{{ imageMessage.imageUrl }}"
-          alt="Impossible d'afficher l'image"
+            [src]="message.avatar"
+            class="avatar"
+            [ngClass]="message.isBot ? 'bot' : ''"
+            (error)="onImgError($event)"
+            (click)="generateNewUserAvatar($event, message.isBot)"
         />
-      </div>
+        <h3 class="user-name" [ngClass]="message.isBot ? 'bot' : ''">
+            {{ name }}
+        </h3>
     </div>
-  </div>
-  <div class="timeform">
-    <i class="fa fa-clock-o" aria-hidden="true"></i>
-    <span class="timestamp"
-      >le {{ message.timestamp | date: "dd/MM/yyyy à HH:mm" }}</span
-    >
-  </div>
+    <div class="message">
+        <p
+            *ngIf="message.isTypingEffect"
+            typingAnimation
+            [typeSpeed]="20"
+            [startDelay]="500"
+            [hideCursorOnComplete]="true"
+            (complete)="onComplete()"
+            class="content-msg"
+        >
+            {{ message.content }}
+        </p>
+        <p *ngIf="!message.isTypingEffect" class="content-msg">
+            {{ message.content }}
+        </p>
+        <div
+            *ngIf="this.hasImageInMsg && isShowImage"
+            class="image-container fui-animation fui-fadein"
+        >
+            <div *ngFor="let imageMessage of message.imageMessage">
+                <img
+                    *ngIf="imageMessage.imageUrl"
+                    class="image"
+                    src="{{ imageMessage.imageUrl }}"
+                    alt="Impossible d'afficher l'image"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="timeform">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+        <span class="timestamp"
+            >le {{ message.timestamp | date: 'dd/MM/yyyy à HH:mm' }}</span
+        >
+    </div>
 </li>

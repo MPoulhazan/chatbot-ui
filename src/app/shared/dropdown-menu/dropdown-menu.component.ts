@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    HostListener,
+    Input,
+    OnInit,
+} from '@angular/core';
 import { PwaService } from '../../services/pwa-service.service';
 import { ILink } from '../../models/link';
 import { SharedService } from '../../services/shared.service';
@@ -21,7 +27,11 @@ export class DropdownMenuComponent implements OnInit {
     isSoundActivated: boolean;
     sharedService: SharedService;
 
-    constructor(sharedService: SharedService, private pwaService: PwaService) {
+    constructor(
+        sharedService: SharedService,
+        private pwaService: PwaService,
+        private eRef: ElementRef
+    ) {
         this.sharedService = sharedService;
     }
 
@@ -36,21 +46,29 @@ export class DropdownMenuComponent implements OnInit {
         this.pwaService.addToHomeScreen();
     }
 
-    toggleDarkMode(evt: boolean) {
+    toggleDarkMode() {
         this.isDarkMode = !this.isDarkMode;
         this.sharedService.isDarkMode = this.isDarkMode;
         this.sharedService.saveParams('dark', this.isDarkMode);
     }
 
-    toggleSpeedAnswer(evt: boolean) {
+    toggleSpeedAnswer() {
         this.isSpeedAnswerActivated = !this.isSpeedAnswerActivated;
         this.sharedService.isSpeedAnswer = this.isSpeedAnswerActivated;
         this.sharedService.saveParams('speed', this.isSpeedAnswerActivated);
     }
 
-    toggleSound(evt: boolean) {
+    toggleSound() {
         this.isSoundActivated = !this.isSoundActivated;
         this.sharedService.isSoundActivated = this.isSoundActivated;
         this.sharedService.saveParams('sound', this.isSoundActivated);
+    }
+
+    @HostListener('document:click', ['$event'])
+    clickout(event) {
+        if (!this.eRef.nativeElement.contains(event.target)) {
+            this.open = false;
+            this.sharedService.open$.next(false);
+        }
     }
 }

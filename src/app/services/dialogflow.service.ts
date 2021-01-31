@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import * as uuid from 'uuid';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DialogflowService {
@@ -11,7 +12,7 @@ export class DialogflowService {
 
     constructor(private http: HttpClient) {}
 
-    public getResponse(query: string) {
+    public getResponse(query: string): Observable<Object> {
         const data = {
             query: query,
             lang: 'fr',

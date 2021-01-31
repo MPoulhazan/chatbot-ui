@@ -10,7 +10,7 @@ export class PwaService {
     }
 
     @HostListener('window:beforeinstallprompt', ['$event'])
-    onbeforeinstallprompt(e) {
+    onbeforeinstallprompt(e: any) {
         e.preventDefault();
         this.deferredPrompt = e;
     }
