@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 export class SharedService {
@@ -6,6 +7,7 @@ export class SharedService {
   isDarkMode = false;
   isSpeedAnswer = true;
   isSoundActivated = true;
+  newAvatarEvent = new BehaviorSubject<boolean>(true);
 
   constructor() {
     this.onMessageReceive = new EventEmitter();

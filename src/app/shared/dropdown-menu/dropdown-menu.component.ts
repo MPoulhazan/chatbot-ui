@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from "@angular/core";
 import { PwaService } from "../../services/pwa-service.service";
 import { ILink } from "../../models/link";
 import { SharedService } from "../../services/shared.service";
-import { NgModuleResolver } from "@angular/compiler";
 
 @Component({
   selector: "app-dropdown-menu",

@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { AvatarGeneratorServiceService } from "../../services/avatar-generator-service.service";
 import { Message } from "../../models";
 import { SharedService } from "../../services/shared.service";
-import { Constants } from "../../utils/constants";
 
 @Component({
   selector: "app-home",
@@ -15,12 +15,20 @@ export class HomeComponent implements OnInit {
 
   @ViewChild("bottom") bottom: ElementRef;
 
-  constructor(sharedService: SharedService) {
+  constructor(
+    sharedService: SharedService,
+    private avatarGeneratorServiceService: AvatarGeneratorServiceService
+  ) {
     this.sharedService = sharedService;
-    const avatarDentistPath = this.getDentistAvatar(true);
-    const avatarUserPath = this.getDentistAvatar(false);
+    const avatarDentistPath = this.avatarGeneratorServiceService.getUserAvatar(
+      true
+    );
 
-    this.message = new Message("", avatarUserPath, false);
+    this.message = new Message(
+      "",
+      this.avatarGeneratorServiceService.userAvatar,
+      false
+    );
     this.messages = [
       new Message(
         "Bonjour je suis Parobot, votre assistant dentaire développé dans le cadre de la thèse de Camille COUFFY. " +
@@ -49,23 +57,6 @@ export class HomeComponent implements OnInit {
         block: "start",
         inline: "nearest",
       });
-    }
-  }
-
-  private getDentistAvatar(isDentist: boolean): string {
-    const today = new Date();
-
-    if (isDentist) {
-      // Month start at 0 so december == 11
-      if (today.getMonth() === 11) {
-        return Constants.AVATAR_DENTIST_CHRISTMAS_PATH;
-      }
-      return Constants.AVATAR_DENTIST_PATH;
-    } else {
-      if (today.getMonth() === 11) {
-        return Constants.AVATAR_USER_CHRISTMAS_PATH;
-      }
-      return Constants.AVATAR_USER_PATH;
     }
   }
 }

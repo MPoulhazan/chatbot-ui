@@ -1,4 +1,13 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+} from "@angular/core";
+import { AvatarGenerator } from "random-avatar-generator";
+import { AvatarGeneratorServiceService } from "../../services/avatar-generator-service.service";
 import { Message } from "../../models";
 import { IImageMessage } from "../../models/image-message";
 import { DialogflowService } from "../../services";
@@ -10,7 +19,7 @@ import { Constants } from "../../utils/constants";
   templateUrl: "./message-form.component.html",
   styleUrls: ["./message-form.component.scss"],
 })
-export class MessageFormComponent implements OnInit {
+export class MessageFormComponent implements OnInit, OnDestroy {
   @Input("message")
   message: Message;
 
@@ -20,24 +29,31 @@ export class MessageFormComponent implements OnInit {
   sharedService: SharedService;
 
   constructor(
+    sharedService: SharedService,
     private dialogFlowService: DialogflowService,
-    sharedService: SharedService
+    private avatarGeneratorServiceService: AvatarGeneratorServiceService
   ) {
     this.sharedService = sharedService;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ckekNewAvatar();
+  }
+
+  ngOnDestroy() {
+    this.sharedService.newAvatarEvent.unsubscribe();
+  }
 
   public sendMessage(): void {
     if (!!this.message.content) {
       this.message.timestamp = new Date();
       this.messages.push(this.message);
-      const dentistAvatar = this.getDentistAvatar(true);
-      const userAvatar = this.getDentistAvatar(false);
+      const dentistAvatar = this.avatarGeneratorServiceService.getUserAvatar(
+        true
+      );
 
-      this.dialogFlowService
-        .getResponse(this.message.content)
-        .subscribe((res: any) => {
+      this.dialogFlowService.getResponse(this.message.content).subscribe(
+        (res: any) => {
           const images: IImageMessage[] = res.result.fulfillment.messages;
           this.messages.push(
             new Message(
@@ -50,25 +66,23 @@ export class MessageFormComponent implements OnInit {
             )
           );
           this.sharedService.onMessageReceive.emit(true);
-        });
-      this.message = new Message("", userAvatar, false);
+        },
+        (err) => console.log("err"),
+        () => {
+          this.message = new Message(
+            "",
+            this.avatarGeneratorServiceService.userAvatar,
+            false
+          );
+        }
+      );
     }
   }
 
-  private getDentistAvatar(isDentist: boolean): string {
-    const today = new Date();
-
-    if (isDentist) {
-      // Month start at 0 so december == 11
-      if (today.getMonth() === 11) {
-        return Constants.AVATAR_DENTIST_CHRISTMAS_PATH;
-      }
-      return Constants.AVATAR_DENTIST_PATH;
-    } else {
-      if (today.getMonth() === 11) {
-        return Constants.AVATAR_USER_CHRISTMAS_PATH;
-      }
-      return Constants.AVATAR_USER_PATH;
-    }
+  ckekNewAvatar() {
+    this.sharedService.newAvatarEvent.subscribe(() => {
+      if (this.message)
+        this.message.avatar = this.avatarGeneratorServiceService.userAvatar;
+    });
   }
 }

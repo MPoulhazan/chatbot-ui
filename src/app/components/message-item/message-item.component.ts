@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { SharedService } from "../../services/shared.service";
 import { Message } from "../../models";
+import "rxjs/Rx";
+import { Constants } from "../../utils/constants";
+import { AvatarGeneratorServiceService } from "../../services/avatar-generator-service.service";
 
 @Component({
   selector: "message-item",
@@ -17,7 +20,10 @@ export class MessageItemComponent implements OnInit, OnDestroy {
   sharedService: SharedService;
   private audio = new Audio();
 
-  constructor(sharedService: SharedService) {
+  constructor(
+    sharedService: SharedService,
+    private avatarGeneratorServiceService: AvatarGeneratorServiceService
+  ) {
     this.sharedService = sharedService;
   }
 
@@ -52,6 +58,16 @@ export class MessageItemComponent implements OnInit, OnDestroy {
 
   showImage() {
     this.isShowImage = this.sharedService.isSpeedAnswer;
+  }
+
+  onImgError(event) {
+    console.error("Unable to load avatar, set default");
+    event.target.src = Constants.AVATAR_USER_PATH;
+  }
+
+  generateNewUserAvatar(event) {
+    this.avatarGeneratorServiceService.generateNewUserAvatar();
+    event.target.src = this.avatarGeneratorServiceService.userAvatar;
   }
 
   private getName(): string {

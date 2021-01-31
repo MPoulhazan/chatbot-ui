@@ -10,6 +10,8 @@
       [src]="message.avatar"
       class="avatar"
       [ngClass]="message.isBot ? 'bot' : ''"
+      (error)="onImgError($event)"
+      (click)="generateNewUserAvatar($event)"
     />
     <h3 class="user-name" [ngClass]="message.isBot ? 'bot' : ''">{{ name }}</h3>
   </div>
