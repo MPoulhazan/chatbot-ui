@@ -9,6 +9,8 @@ export class SharedService {
     isSoundActivated = true;
     newAvatarEvent = new BehaviorSubject<boolean>(true);
 
+    static readonly AVATAR_KEY = 'avatar';
+
     constructor() {
         this.onMessageReceive = new EventEmitter();
         this.isDarkMode = this.getParam('dark') === 'true';

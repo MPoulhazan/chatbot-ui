@@ -11,12 +11,17 @@ export class AvatarGeneratorServiceService {
     private randomAvatarId: string;
 
     constructor(private sharedService: SharedService) {
-        this.randomAvatarId = Math.random().toString(36).substring(7);
+        const savedAvatar = this.sharedService.getParam(
+            SharedService.AVATAR_KEY
+        );
+        this.randomAvatarId = savedAvatar
+            ? savedAvatar
+            : Math.random().toString(36).substring(7);
     }
     readonly AVATAR_API_URL = Constants.AVATAR_API_URL;
 
     getUserAvatar(isDentist: boolean): string {
-        const avatarRd = this.generateRandomAvatar(true);
+        this.generateRandomAvatar(true);
         const today = new Date();
 
         if (isDentist) {
@@ -32,6 +37,10 @@ export class AvatarGeneratorServiceService {
 
     generateNewUserAvatar(): void {
         this.randomAvatarId = Math.random().toString(36).substring(7);
+        this.sharedService.saveParams(
+            SharedService.AVATAR_KEY,
+            this.randomAvatarId
+        );
         this.generateRandomAvatar(true);
         this.sharedService.newAvatarEvent.next(true);
     }
