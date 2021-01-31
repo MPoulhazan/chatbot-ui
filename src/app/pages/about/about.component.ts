@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../services/shared.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics-service.service';
 
 @Component({
@@ -11,7 +12,13 @@ export class AboutComponent implements OnInit {
         'https://play.google.com/store/apps/details?id=com.firebaseapp.chatbot_dentist.twa';
     readonly cvLink = 'http://cv-mpoulhazan.herokuapp.com/';
 
-    constructor(private googleAnalyticsService: GoogleAnalyticsService) {}
+    constructor(
+        private sharedService: SharedService,
+        private googleAnalyticsService: GoogleAnalyticsService
+    ) {
+        // Close menu when change page
+        this.sharedService.open$.next(false);
+    }
 
     ngOnInit(): void {}
 

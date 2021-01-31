@@ -20,6 +20,10 @@ export class HomeComponent implements OnInit {
         private avatarGeneratorServiceService: AvatarGeneratorServiceService
     ) {
         this.sharedService = sharedService;
+
+        // Close menu when change page
+        this.sharedService.open$.next(false);
+
         const avatarDentistPath = this.avatarGeneratorServiceService.getUserAvatar(
             true
         );
