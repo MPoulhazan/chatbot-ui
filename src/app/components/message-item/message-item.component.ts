@@ -1,79 +1,81 @@
-import { Component, OnInit, Input, OnDestroy } from "@angular/core";
-import { SharedService } from "../../services/shared.service";
-import { Message } from "../../models";
-import "rxjs/Rx";
-import { Constants } from "../../utils/constants";
-import { AvatarGeneratorServiceService } from "../../services/avatar-generator-service.service";
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { SharedService } from '../../services/shared.service';
+import { Message } from '../../models';
+import { Constants } from '../../utils/constants';
+import { AvatarGeneratorServiceService } from '../../services/avatar-generator-service.service';
 
 @Component({
-  selector: "message-item",
-  templateUrl: "./message-item.component.html",
-  styleUrls: ["./message-item.component.scss"],
+    selector: 'app-message-item',
+    templateUrl: './message-item.component.html',
+    styleUrls: ['./message-item.component.scss'],
 })
 export class MessageItemComponent implements OnInit, OnDestroy {
-  @Input("message")
-  message: Message;
+    @Input('message')
+    message: Message;
 
-  hasImageInMsg = false;
-  name = "";
-  isShowImage = true;
-  sharedService: SharedService;
-  private audio = new Audio();
+    hasImageInMsg = false;
+    name = '';
+    isShowImage = true;
+    sharedService: SharedService;
+    private audio = new Audio();
 
-  constructor(
-    sharedService: SharedService,
-    private avatarGeneratorServiceService: AvatarGeneratorServiceService
-  ) {
-    this.sharedService = sharedService;
-  }
-
-  ngOnInit() {
-    this.name = this.getName();
-    this.audio.src = "../../assets/sounds/typing.mp3";
-    this.audio.load();
-
-    if (this.message.isTypingEffect && this.sharedService.isSoundActivated) {
-      this.audio.play();
+    constructor(
+        sharedService: SharedService,
+        private avatarGeneratorServiceService: AvatarGeneratorServiceService
+    ) {
+        this.sharedService = sharedService;
     }
 
-    this.hasImageInMsg =
-      this.message.imageMessage &&
-      this.message.imageMessage.length > 0 &&
-      this.message.imageMessage.filter((img) => img.imageUrl).length > 0;
+    ngOnInit() {
+        this.name = this.getName();
+        this.audio.src = '../../assets/sounds/typing.mp3';
+        this.audio.load();
 
-    this.showImage();
-  }
+        if (
+            this.message.isTypingEffect &&
+            this.sharedService.isSoundActivated
+        ) {
+            this.audio.play();
+        }
 
-  ngOnDestroy() {
-    if (this.audio) this.audio.pause();
-    this.audio = null;
-  }
+        this.hasImageInMsg =
+            this.message.imageMessage &&
+            this.message.imageMessage.length > 0 &&
+            this.message.imageMessage.filter((img) => img.imageUrl).length > 0;
 
-  onComplete() {
-    if (this.audio) this.audio.pause();
-    this.audio = null;
-
-    this.isShowImage = true;
-  }
-
-  showImage() {
-    this.isShowImage = this.sharedService.isSpeedAnswer;
-  }
-
-  onImgError(event) {
-    console.error("Unable to load avatar, set default");
-    event.target.src = Constants.AVATAR_USER_PATH;
-  }
-
-  generateNewUserAvatar(event) {
-    this.avatarGeneratorServiceService.generateNewUserAvatar();
-    event.target.src = this.avatarGeneratorServiceService.userAvatar;
-  }
-
-  private getName(): string {
-    if (this.message.isBot) {
-      return "Parobot";
+        this.showImage();
     }
-    return "Vous";
-  }
+
+    ngOnDestroy() {
+        if (this.audio) this.audio.pause();
+        this.audio = null;
+    }
+
+    onComplete() {
+        if (this.audio) this.audio.pause();
+        this.audio = null;
+
+        this.isShowImage = true;
+    }
+
+    showImage() {
+        this.isShowImage = this.sharedService.isSpeedAnswer;
+    }
+
+    onImgError(event) {
+        console.error('Unable to load avatar, set default');
+        event.target.src = Constants.AVATAR_USER_PATH;
+    }
+
+    generateNewUserAvatar(event) {
+        this.avatarGeneratorServiceService.generateNewUserAvatar();
+        event.target.src = this.avatarGeneratorServiceService.userAvatar;
+    }
+
+    private getName(): string {
+        if (this.message.isBot) {
+            return 'Parobot';
+        }
+        return 'Vous';
+    }
 }
