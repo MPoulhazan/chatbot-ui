@@ -30,7 +30,11 @@
             [classes]="'rounded '"
             (action)="toggleSound()"
         ></app-fui-switch>
-        <a class="link" href="{{ playstoreLink }}" target="_blank"
+        <a
+            *ngIf="isMobile"
+            class="link"
+            href="{{ playstoreLink }}"
+            target="_blank"
             >Installer l'app</a
         >
         <a class="link" href="{{ pollLink }}" target="_blank"
