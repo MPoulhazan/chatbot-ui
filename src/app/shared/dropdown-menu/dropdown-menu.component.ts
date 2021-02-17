@@ -27,6 +27,9 @@ export class DropdownMenuComponent implements OnInit {
     isSoundActivated: boolean;
     sharedService: SharedService;
 
+    pollLink =
+        'https://docs.google.com/forms/d/e/1FAIpQLSdWVTyXY-_Fy4xFlVscO5ddwik9Zr0P3PIvNOF2AAW0kXUNjw/viewform?usp=sf_link';
+
     constructor(
         sharedService: SharedService,
         private pwaService: PwaService,
