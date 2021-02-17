@@ -27,8 +27,11 @@ export class DropdownMenuComponent implements OnInit {
     isSoundActivated: boolean;
     sharedService: SharedService;
 
-    pollLink =
+    readonly pollLink =
         'https://docs.google.com/forms/d/e/1FAIpQLSdWVTyXY-_Fy4xFlVscO5ddwik9Zr0P3PIvNOF2AAW0kXUNjw/viewform?usp=sf_link';
+
+    readonly playstoreLink =
+        'https://play.google.com/store/apps/details?id=com.firebaseapp.chatbot_dentist.twa';
 
     constructor(
         sharedService: SharedService,
