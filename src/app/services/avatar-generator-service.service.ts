@@ -51,12 +51,6 @@ export class AvatarGeneratorServiceService {
             'NoHair',
             'Eyepatch',
             'Hat',
-            'Hijab',
-            'Turban',
-            'WinterHat1',
-            'WinterHat2',
-            'WinterHat3',
-            'WinterHat4',
             'LongHairBigHair',
             'LongHairBob',
             'LongHairBun',
@@ -88,16 +82,22 @@ export class AvatarGeneratorServiceService {
         const accessoriesTypeOptions = new Array<string>();
         accessoriesTypeOptions.push(
             'Blank',
-            'Kurt',
+            'Blank',
+            'Blank',
+            'Blank',    // More avatar without glasses
+            'Blank',
+            'Blank',
             'Prescription01',
             'Prescription02',
-            'Round',
-            'Sunglasses',
-            'Wayfarers'
+            'Round'
         );
 
         const facialHairTypeOptions = new Array<string>();
         facialHairTypeOptions.push(
+            'Blank',
+            'Blank',
+            'Blank',
+            'Blank',
             'Blank',
             'BeardMedium',
             'BeardLight',
@@ -134,12 +134,10 @@ export class AvatarGeneratorServiceService {
         const eyeTypeOptions = new Array<string>();
         eyeTypeOptions.push(
             'Close',
-            'Cry',
             'Default',
             'Dizzy',
             'EyeRoll',
             'Happy',
-            'Hearts',
             'Side',
             'Squint',
             'Surprised',
@@ -149,8 +147,6 @@ export class AvatarGeneratorServiceService {
 
         const eyebrowTypeOptions = new Array<string>();
         eyebrowTypeOptions.push(
-            'Angry',
-            'AngryNatural',
             'Default',
             'DefaultNatural',
             'FlatNatural',
@@ -165,18 +161,10 @@ export class AvatarGeneratorServiceService {
 
         const mouthTypeOptions = new Array<string>();
         mouthTypeOptions.push(
-            'Concerned',
             'Default',
             'Disbelief',
-            'Eating',
-            'Grimace',
-            'Sad',
-            'ScreamOpen',
             'Serious',
-            'Smile',
-            'Tongue',
-            'Twinkle',
-            'Vomit'
+            'Smile'
         );
 
         const skinColorOptions = new Array<string>();
