@@ -30,8 +30,11 @@
             [classes]="'rounded '"
             (action)="toggleSound()"
         ></app-fui-switch>
-        <span *ngIf="true || isMobile" class="link" (click)="installApp()"
-            >Installer l'App</span
+        <a class="link" href="{{ playstoreLink }}" target="_blank"
+            >Installer l'app</a
+        >
+        <a class="link" href="{{ pollLink }}" target="_blank"
+            >Donnez votre avis</a
         >
     </div>
 </div>
