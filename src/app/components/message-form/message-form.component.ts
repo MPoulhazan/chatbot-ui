@@ -50,27 +50,33 @@ export class MessageFormComponent implements OnInit, OnDestroy {
         if (!!this.message.content) {
             this.message.timestamp = new Date();
             this.messages.push(this.message);
-            const dentistAvatar = this.avatarGeneratorServiceService.getUserAvatar(
-                true
-            );
+            const dentistAvatar =
+                this.avatarGeneratorServiceService.getUserAvatar(true);
 
             this.dialogFlowService.getResponse(this.message.content).subscribe(
                 (res: any) => {
-                    const images: IImageMessage[] =
-                        res.result.fulfillment.messages;
-                    this.messages.push(
-                        new Message(
-                            res.result.fulfillment.speech,
-                            dentistAvatar,
-                            true,
-                            res.timestamp,
-                            images,
-                            !this.sharedService.isSpeedAnswer
-                        )
+                    const images: string[] = res && res.imagesUrl;
+                    this.printMessage(
+                        res.message,
+                        dentistAvatar,
+                        res.timestamp,
+                        images
                     );
-                    this.sharedService.onMessageReceive.emit(true);
                 },
-                (err) => console.log('err'),
+                (err) => {
+                    console.log('An error occured', err),
+                        this.printMessage(
+                            'Je suis actuellement en maintenance sur cette plateforme, mais vous pouvez passer par Messenger pour me poser vos questions https://www.facebook.com/parobotNantes',
+                            dentistAvatar,
+                            new Date(),
+                            null
+                        );
+                    this.message = new Message(
+                        '',
+                        this.avatarGeneratorServiceService.userAvatar,
+                        false
+                    );
+                },
                 () => {
                     this.message = new Message(
                         '',
@@ -82,11 +88,31 @@ export class MessageFormComponent implements OnInit, OnDestroy {
         }
     }
 
+    private printMessage(
+        message: string,
+        dentistAvatar: string,
+        timestamp: Date,
+        imagesUrls: string[]
+    ) {
+        this.messages.push(
+            new Message(
+                message,
+                dentistAvatar,
+                true,
+                timestamp,
+                imagesUrls,
+                !this.sharedService.isSpeedAnswer
+            )
+        );
+        this.sharedService.onMessageReceive.emit(true);
+    }
+
     ckekNewAvatar() {
         this.avatarSubscription = this.sharedService.newAvatar$.subscribe(
             () => {
                 if (this.message) {
-                    this.message.avatar = this.avatarGeneratorServiceService.userAvatar;
+                    this.message.avatar =
+                        this.avatarGeneratorServiceService.userAvatar;
                 }
             }
         );

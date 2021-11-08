@@ -4,7 +4,7 @@ export class Message {
     timestamp: Date;
     isBot: boolean;
     avatar: string;
-    imageMessage: IImageMessage[];
+    imagesUrls: string[];
     isTypingEffect: boolean;
 
     constructor(
@@ -12,14 +12,14 @@ export class Message {
         avatar: string,
         isBot: boolean,
         timestamp?: Date,
-        imageMessage?: IImageMessage[],
+        imagesUrls?: string[],
         isTypingEffect?: boolean
     ) {
         this.content = content;
         this.isBot = isBot;
         this.timestamp = timestamp;
         this.avatar = avatar;
-        this.imageMessage = imageMessage;
+        this.imagesUrls = imagesUrls;
         this.isTypingEffect = isTypingEffect;
     }
 }

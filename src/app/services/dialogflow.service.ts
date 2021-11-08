@@ -7,7 +7,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DialogflowService {
-    private baseURL = 'https://api.dialogflow.com/v1/query?v=20150910';
+    private baseURL =
+        'https://us-central1-bebot-hikvtw.cloudfunctions.net/root/intent';
     private token: string = environment.token;
 
     constructor(private http: HttpClient) {}
@@ -19,15 +20,18 @@ export class DialogflowService {
             sessionId: uuid.v4(),
         };
         return this.http
-            .post(`${this.baseURL}`, data, this.getOptions())
+            .get(`${this.baseURL}`, this.getOptions(query))
             .map((res) => {
                 return res;
             });
     }
 
-    private readonly getOptions = () => {
+    private readonly getOptions = (query: string) => {
         return {
-            headers: new HttpHeaders({ Authorization: `Bearer ${this.token}` }),
+            headers: new HttpHeaders({
+                Authorization: `Bearer ${this.token}`,
+                query: query,
+            }),
         };
     };
 }

@@ -36,11 +36,11 @@
             *ngIf="this.hasImageInMsg && isShowImage"
             class="image-container fui-animation fui-fadein"
         >
-            <div *ngFor="let imageMessage of message.imageMessage">
+            <div *ngFor="let imageUrl of message.imagesUrls">
                 <img
-                    *ngIf="imageMessage.imageUrl"
+                    *ngIf="imageUrl"
                     class="image"
-                    src="{{ imageMessage.imageUrl }}"
+                    src="{{ imageUrl }}"
                     alt="Impossible d'afficher l'image"
                 />
             </div>

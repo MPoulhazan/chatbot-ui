@@ -39,9 +39,9 @@ export class MessageItemComponent implements OnInit, OnDestroy {
         }
 
         this.hasImageInMsg =
-            this.message.imageMessage &&
-            this.message.imageMessage.length > 0 &&
-            this.message.imageMessage.filter((img) => img.imageUrl).length > 0;
+            this.message.imagesUrls &&
+            this.message.imagesUrls.length > 0 &&
+            this.message.imagesUrls.filter((img) => !!img).length > 0;
 
         this.showImage();
     }

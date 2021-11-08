@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { ILink } from '../../models/link';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-header',
@@ -13,20 +14,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
     open = false;
     sharedService: SharedService;
     openSubscription: Subscription;
-
+    private destroy$ = new Subject();
+    // Quand tu as fait une école à 10k l'année et que le stagiaire non diplomé vient te faire la remarque que la typo est trop grande sur les slides que tu as préparé pour Fabieng
     constructor(sharedService: SharedService) {
         this.sharedService = sharedService;
     }
 
     ngOnInit(): void {
         this.links = this.getLinks();
-        this.openSubscription = this.sharedService.open$.subscribe(
-            (opened) => (this.open = opened)
-        );
+        this.sharedService.open$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((opened) => (this.open = opened));
     }
 
     ngOnDestroy(): void {
-        this.openSubscription.unsubscribe();
+        this.destroy$.next(true);
+        this.destroy$.unsubscribe();
     }
 
     toggleOpen() {
