@@ -28,7 +28,7 @@
     "@types/seedrandom": "^2.4.28",
     "angular-typing-animation": "^0.5.4",
     "core-js": "^2.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "material-icons": "^0.3.1",
     "path": "^0.12.7",
     "random-avatar-generator": "^2.0.0",
